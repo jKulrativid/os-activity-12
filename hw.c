@@ -63,15 +63,12 @@ void readActiveProcess(void)
 
 void readMemoryProcess(void)
 {
-    struct sysinfo* sysInfo;
-    si_meminfo(sysInfo);
+    struct sysinfo sysInfo;
+    si_meminfo(&sysInfo);
     unsigned idx = 0;
     long available = si_mem_available();
-    if (!sysInfo) {
-        idx += snprintf(amount_of_memory_buffer + idx, 128, "isnull\n");
-    }
-    idx += snprintf(amount_of_memory_buffer + idx, 128, "MemTotal %d\n", sysInfo->totalram);
-    idx += snprintf(amount_of_memory_buffer + idx, 128, "MemFree %d\n", sysInfo->freeram);
+    idx += snprintf(amount_of_memory_buffer + idx, 128, "MemTotal %d\n", sysInfo.totalram);
+    idx += snprintf(amount_of_memory_buffer + idx, 128, "MemFree %d\n", sysInfo.freeram);
     idx += snprintf(amount_of_memory_buffer + idx, 128, "MemAvailable %ld\n", available);
 }
 
