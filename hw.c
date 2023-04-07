@@ -67,9 +67,9 @@ void readMemoryProcess(void)
     si_meminfo(&sysInfo);
     unsigned idx = 0;
     long available = si_mem_available();
-    idx += snprintf(amount_of_memory_buffer + idx, 128, "MemTotal %d\n", sysInfo.totalram);
-    idx += snprintf(amount_of_memory_buffer + idx, 128, "MemFree %d\n", sysInfo.freeram);
-    idx += snprintf(amount_of_memory_buffer + idx, 128, "MemAvailable %ld\n", available);
+    idx += snprintf(amount_of_memory_buffer + idx, 128, "MemTotal %d\n", 4*sysInfo.totalram);
+    idx += snprintf(amount_of_memory_buffer + idx, 128, "MemFree %d\n", 4*sysInfo.freeram);
+    idx += snprintf(amount_of_memory_buffer + idx, 128, "MemAvailable %ld\n", 4*available);
 }
 
 static int device_open(struct inode *inode, struct file *file)
