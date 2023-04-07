@@ -67,8 +67,8 @@ void readMemoryProcess(void)
     si_meminfo(sysInfo);
     unsigned idx = 0;
     long available = si_mem_available();
-    idx += snprintf(active_process_buffer + idx, 128, "MemTotal %d\n", sysInfo.totalram);
-    idx += snprintf(active_process_buffer + idx, 128, "MemFree %d\n", sysInfo.freeram);
+    idx += snprintf(active_process_buffer + idx, 128, "MemTotal %d\n", sysInfo->totalram);
+    idx += snprintf(active_process_buffer + idx, 128, "MemFree %d\n", sysInfo->freeram);
     idx += snprintf(active_process_buffer + idx, 128, "MemAvailable %ld\n", available);
 }
 
